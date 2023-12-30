@@ -74,13 +74,13 @@ namespace TF2.Common
             // ModifyGlobalLoot would NOT work due to the boolean below being needed.
             if (npc.friendly || NPCID.Sets.CountsAsCritter[npc.type] || npc.type == NPCID.TargetDummy || ModContent.GetInstance<TF2Config>().NoTF2Loot) return;
 
-            if (ModContent.GetInstance<TF2Config>().Loot)
+            if (!ModContent.GetInstance<TF2Config>().Loot)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<PrimaryAmmo>(), 1, 1, 10));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SecondaryAmmo>(), 1, 1, 10));
             }
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<Metal>(), 1, 1, 5));
-            if (ModContent.GetInstance<TF2Config>().Loot)
+            if (!ModContent.GetInstance<TF2Config>().Loot)
             {
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<SmallHealth>(), 1));
                 npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<MediumHealth>(), 10));
